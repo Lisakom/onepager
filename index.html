@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<meta charset="UTF-8"
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Browser History Timeline</title>
+  <link rel="stylesheet" href="width=device-width, initial-scale=1.0">
   <style>
+    
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color white-space: ;
       overflow-x: hidden;
     }
 
@@ -15,14 +19,26 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+      padding-top: 50px; /* Top padding for the title */
+    }
+.zoom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0,3s ease;
+}
+
+    h2 {
+      margin: 60px 0; /*Icreased bottom margin for the title*/
     }
 
     .timeline {
       position: absolute;
-      left: 50%;
+      top: 200px; /* Lowered the timeline to ensure no overlap with the title */
+      left: 50%
       transform: translateX(-50%);
       width: 4px;
-      background-color: #000;
+      background-color: black;
       height: 100%;
     }
 
@@ -31,16 +47,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 50px 0;
+      margin: 180px 0; /* Increased spacing between events */
     }
 
     .event::before {
       content: "";
       position: absolute;
-      left: -8px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 20px;
       height: 20px;
       background-color: #0078d7;
+      border: 3px solid #fff;
       border-radius: 50%;
       z-index: 1;
     }
@@ -53,25 +71,30 @@
       border-radius: 5px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .info.left {
-      left: calc(50% - 250px);
-      transform: translateX(-50%);
+      left: calc(50% - 390px); /* Positioned to the left of the timeline */
     }
 
     .info.right {
-      left: calc(50% + 50px);
+      left: calc(50% + 50px); /* Positioned to the right of the timeline */
     }
 
-    h2 {
-      text-align: center;
-      margin: 20px 0;
+    .info img {
+      width: 300px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      transition: transform 0.3s ease, cursor 0,3s ease;
     }
-
-    .spacer {
-      height: 1200px; /* For demonstration purposes */
-    }
+     /* Hover effect for zoom */
+     .info img:hover {
+     transform: scale(1.2); /* Zoom in */
+     cursor: zoom-in; /* Change cursor to magnifying glass */}
   </style>
 </head>
 <body>
@@ -81,6 +104,7 @@
     
     <div class="event">
       <div class="info left">
+        <img src="images/AR-706159976.jpgampupdated201306131554ampimageversionFacebookampexactH630ampexactW1200ampexactfitcropampnoborder.jpeg" alt="WorldWideWeb">
         <h3>1991: WorldWideWeb</h3>
         <p>The first web browser created by Tim Berners-Lee, later renamed Nexus.</p>
       </div>
@@ -88,6 +112,7 @@
     
     <div class="event">
       <div class="info right">
+        <img src="images/Screenshot-of-the-Mosaic-browser-displaying-the-NCSAs-home-page-The-browser-was.png" alt="Mosaic">
         <h3>1993: Mosaic</h3>
         <p>Mosaic revolutionized the web with its graphical interface.</p>
       </div>
@@ -95,6 +120,7 @@
     
     <div class="event">
       <div class="info left">
+        <img src="images/netscape-browser^1997^netscape-navigator-4-windows-about.png" alt="Netscape Navigator">
         <h3>1994: Netscape Navigator</h3>
         <p>The first commercially successful browser, laying the groundwork for web standards.</p>
       </div>
@@ -102,6 +128,7 @@
     
     <div class="event">
       <div class="info right">
+        <img src="images/e75bee6a04202ffeec6901f80cb977ae2aa7489a34fadfb9f5a98c292aca37b6-600.webp" alt="Mozilla Firefox">
         <h3>2004: Mozilla Firefox</h3>
         <p>Launched as an open-source alternative to Internet Explorer.</p>
       </div>
@@ -109,12 +136,11 @@
     
     <div class="event">
       <div class="info left">
+        <img src="images/Google-Chrome-Anpassungen-1685554232-1-0.jpg.png" alt="Google Chrome">
         <h3>2008: Google Chrome</h3>
         <p>Google Chrome introduced speed, simplicity, and strong developer tools.</p>
       </div>
     </div>
-    
-    <div class="spacer"></div>
   </div>
 </body>
 </html>

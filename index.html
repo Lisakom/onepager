@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #2b2b2b, #1c1c1c);
+      background: linear-gradient(135deg, #242424, #1c1c1c);
       color: #fff;
       overflow-x: hidden;
     }
@@ -34,7 +34,7 @@
       transform: translateX(-50%);
       width: 4px;
       background-color: #00aaff;
-      height: 100%;
+      height: 5100px;
     }
 
     .event {
@@ -42,7 +42,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 200px 0;
+      margin: 300px 0;
     }
 
     .event::before {
@@ -94,60 +94,82 @@
     }
 
     .info img:hover {
-      transform: scale(1.5);
+      transform: scale(1.3);
       cursor: zoom-in;
       z-index: 10;
     }
     info p {
   margin-top: 10px;
   z-index: 0;
-  text-align: center;
+  text-align: center;}
 
-    .search-bar {
-      width: 100%;
-      background-color: #1c1c1c;
-      padding: 10px 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      display: flex;
-      justify-content: center;
-      position: sticky;
+  .search-bar {
+  width: 100%; 
+  padding: 20px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  max-width: 700px; 
+  padding: 15px; 
+  border-radius: 10px;
+  border: 2px solid #00aaff;
+  outline: none;
+  font-size: 18px; 
+  background-color: #2b2b2b;
+  color: #fff;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.search-bar button {
+  margin-left: 15px; 
+  padding: 15px 30px; 
+  border-radius: 10px; 
+  border: none;
+  background-color: #00aaff;
+  color: #fff;
+  font-size: 18px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0088cc;
+}
+.scroll-effect {
+      position: fixed;
       top: 0;
-      z-index: 1000;
+      right: 0;
+      height: 100%;
+      width: 100px;
+      background: url('images/pngegg-2.png') repeat-y;
+      background-size: contain;
+      opacity: 0.1;
+      pointer-events: none;
+      animation: scrollEffect 10s linear infinite;
     }
 
-    .search-bar input {
-      width: 60%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #00aaff;
-      outline: none;
-      font-size: 16px;
-      background-color: #2b2b2b;
-      color: #fff;
-    }
-
-    .search-bar input::placeholder {
-      color: #aaa;
-    }
-
-    .search-bar button {
-      margin-left: 10px;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      background-color: #00aaff;
-      color: #fff;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .search-bar button:hover {
-      background-color: #0088cc;
+    @keyframes scrollEffect {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 0 100%;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="scroll-effect"></div>
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search for a browser...">
     <button onclick="searchBrowser()">Go</button>
@@ -159,41 +181,65 @@
     
     <div class="event" id="worldwideweb">
       <div class="info left">
-        <img src="images/AR-706159976.jpgampupdated201306131554ampimageversionFacebookampexactH630ampexactW1200ampexactfitcropampnoborder.jpeg" alt="WorldWideWeb">
+        <img src="images/AR-706159976.jpgampupdated201306131554ampimageversionFacebookampexactH630ampexactW1200ampexactfitcropampnoborder.jpeg" alt=" 1991: WorldWideWeb was the first web browser created by Tim Berners-Lee, later renamed Nexus. It allowed users to view and edit web pages">
         <h3>1991: WorldWideWeb</h3>
-        <p>The first web browser created by Tim Berners-Lee, later renamed Nexus.</p>
+        <p>The first web browser created by Tim Berners-Lee, later renamed Nexus. It allowed users to view and edit web pages.</p>
       </div>
     </div>
     
     <div class="event" id="mosaic">
       <div class="info right">
-        <img src="images/Screenshot-of-the-Mosaic-browser-displaying-the-NCSAs-home-page-The-browser-was.png" alt="Mosaic">
+        <img src="images/Screenshot-of-the-Mosaic-browser-displaying-the-NCSAs-home-page-The-browser-was.png" alt="Mosaic 1993 revolutionized the web with its graphical interface, making the internet accessible to a wider audience">
         <h3>1993: Mosaic</h3>
-        <p>Mosaic revolutionized the web with its graphical interface.</p>
+        <p>Mosaic revolutionized the web with its graphical interface, making the internet accessible to a wider audience.</p>
+      </div>
+    </div>
+
+    <div class="event" id="netscape">
+      <div class="info left">
+        <img src="images/netscape-browser^1997^netscape-navigator-4-windows-about.png" alt="Netscape Navigator 1994: the first commercially successful browser, introducing innovations like cookies and secure data transmission">
+        <h3>1994: Netscape Navigator</h3>
+        <p>The first commercially successful browser, introducing innovations like cookies and secure data transmission.</p>
+      </div>
+    </div>
+
+    <div class="event" id="internetexplorer">
+      <div class="info right">
+        <img src="images/Zabt2xcL0OanZB0J8vjFbPBlif0.jpeg" alt="Internet Explorer 1995: dominated the browser market for over a decade, bundled with Windows and driving web standards adoption">
+        <h3>1995: Internet Explorer</h3>
+        <p>Dominated the browser market for over a decade, bundled with Windows and driving web standards adoption.</p>
       </div>
     </div>
     
-    <div class="event" id="netscape">
+    <div class="event" id="opera">
       <div class="info left">
-        <img src="images/netscape-browser^1997^netscape-navigator-4-windows-about.png" alt="Netscape Navigator">
-        <h3>1994: Netscape Navigator</h3>
-        <p>The first commercially successful browser, laying the groundwork for web standards.</p>
+        <img src="images/opera-2-0-01.png" alt="Opera 1996: Innovative features like tabbed browsing and built-in tools for enhanced user experience.">
+        <h3>1996: Opera</h3>
+        <p>Innovative features like tabbed browsing and built-in tools for enhanced user experience.</p>
+      </div>
+    </div>
+
+    <div class="event" id="safari">
+      <div class="info right">
+        <img src="images/safari1.jpg" alt="Safari 2003: default browser for macOS and iOS, optimized for Apple devices. Known for energy efficiency, privacy features like Intelligent Tracking Prevention, and seamless integration with the Apple ecosystem ">
+        <h3>2003: Safari</h3>
+        <p>Default browser for macOS and iOS, optimized for Apple devices. Known for energy efficiency, privacy features like Intelligent Tracking Prevention, and seamless integration with the Apple ecosystem.</p>
       </div>
     </div>
     
     <div class="event" id="firefox">
-      <div class="info right">
-        <img src="images/e75bee6a04202ffeec6901f80cb977ae2aa7489a34fadfb9f5a98c292aca37b6-600.webp" alt="Mozilla Firefox">
+      <div class="info left">
+        <img src="images/e75bee6a04202ffeec6901f80cb977ae2aa7489a34fadfb9f5a98c292aca37b6-600.webp" alt="Mozilla Firefox 2004: open-source browser focused on privacy, customization, and performance, challenging Internet Explorer's dominance.">
         <h3>2004: Mozilla Firefox</h3>
-        <p>Launched as an open-source alternative to Internet Explorer.</p>
+        <p>Open-source browser focused on privacy, customization, and performance, challenging Internet Explorer's dominance.</p>
       </div>
     </div>
     
     <div class="event" id="chrome">
-      <div class="info left">
-        <img src="images/Google-Chrome-Anpassungen-1685554232-1-0.jpg.png" alt="Google Chrome">
+      <div class="info right">
+        <img src="images/Google-Chrome-Anpassungen-1685554232-1-0.jpg.png" alt="Google Chrome 2008: revolutionized browsing with speed, simplicity, and powerful developer tools, becoming the most popular browser globally.">
         <h3>2008: Google Chrome</h3>
-        <p>Google Chrome introduced speed, simplicity, and strong developer tools.</p>
+        <p>Revolutionized browsing with speed, simplicity, and powerful developer tools, becoming the most popular browser globally.</p>
       </div>
     </div>
   </div>
@@ -206,7 +252,10 @@
     mosaic: 'Mosaic',
     netscape: 'Netscape Navigator',
     firefox: 'Mozilla Firefox',
-    chrome: 'Google Chrome'
+    chrome: 'Google Chrome',
+    opera: 'Opera',
+    internetexplorer:'Internet Explorer',
+    safari: 'Safari'
   };
 
   // Find a matching section
@@ -217,8 +266,22 @@
   if (match) {
     const element = document.getElementById(match);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Smooth scroll to the element
-    } else {
+  const offset = 80; // Высота липкой шапки
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+  // Прокрутка с учетом смещения
+  window.scrollTo({
+    top: rect.top + scrollTop - offset,
+    behavior: 'smooth',
+  });
+
+  // Подсветка найденного элемента
+  element.style.animation = 'highlight 2s ease';
+  setTimeout(() => {
+    element.style.animation = ''; // Убираем подсветку через 2 секунды
+  }, 2000);
+}else {
       alert('Element not found!');
     }
   } else {

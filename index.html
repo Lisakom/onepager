@@ -48,8 +48,10 @@
     .event::before {
       content: "";
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 90%;
+      left: 0;
+      top: calc(100% + 300px);
+      transform: translate(-50%, -50%);
       width: 20px;
       height: 20px;
       background-color: #00aaff;
@@ -166,6 +168,63 @@
         background-position: 0 100%;
       }
     }
+    @media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 40px; /* Уменьшаем заголовок */
+    margin: 40px 0;
+  }
+
+  .timeline {
+    top: 100px; /* Корректируем высоту линии таймлайна */
+    width: 3px; /* Делаем линию уже */
+    height: auto; /* Позволяем линии адаптироваться */
+  }
+
+  .info {
+    max-width: 90%; /* Уменьшаем ширину информационных блоков */
+    padding: 20px; /* Сокращаем внутренние отступы */
+    font-size: 14px; /* Уменьшаем размер текста */
+  }
+
+  .info img {
+    width: 100%; /* Картинка растягивается на всю ширину блока */
+    height: auto;
+  }
+
+  .info.left {
+    left: 50%; /* Центрируем блоки на мобильных */
+    transform: translateX(-50%);
+  }
+
+  .info.right {
+    left: 50%; /* Центрируем блоки на мобильных */
+    transform: translateX(-50%);
+  }
+
+  .search-bar {
+    flex-direction: column; /* Располагаем элементы друг под другом */
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .search-bar input {
+    width: 100%; /* Поле поиска растягивается на всю ширину */
+  }
+
+  .search-bar button {
+    width: 100%; /* Кнопка поиска тоже растягивается */
+  }
+
+  .event {
+    margin: 150px 0; /* Уменьшаем расстояние между событиями */
+  }
+}
+    
   </style>
 </head>
 <body>

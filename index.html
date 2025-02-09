@@ -168,25 +168,28 @@ nav ul li a:hover {
 
 @media (max-width: 768px) {
       .info {
-        position: static;
-        width: 90%;
-        max-width: 350px;
-        margin: 20px auto;
+       left: 50%;
+       transform: translateX(-50%);
+       max-width: 90%;
+       font-size: 14px;
       }
 
       .timeline {
-        left: 10px;
-        width: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
       }
 
       .event {
         flex-direction: column;
         align-items: center;
-        text-align: center;
       }
 
       .event::before {
-        left: 10px;
+        width: 15px;
+        height: 15px;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       h2 {
@@ -194,11 +197,10 @@ nav ul li a:hover {
         margin: 30px 0;
       }
 
-      .info {
-        padding: 10px;
-        font-size: 14px;
+      .info img{
+        max-width: 100%;
       }
-    }
+      }
   </style>
 </head>
 <body>

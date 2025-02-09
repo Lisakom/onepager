@@ -172,23 +172,38 @@ nav ul li a:hover {
   }
 }
 @media (max-width: 768px) {
-    .timeline-container {
-        padding: 20px;
-        text-align: center;
+    /* Уменьшаем текст под заголовком */
+    .timeline-entry h2 {
+        font-size: 18px; /* Еще немного уменьшили */
     }
 
+    .timeline-entry p {
+        font-size: 12px;
+    }
+
+    /* Уменьшаем ширину блоков и центрируем их */
     .timeline-entry {
-        width: 100%;
-        max-width: 90%;
-        margin: 0 auto;
-        text-align: center;
+        max-width: 100%; /* Растягиваем на всю ширину экрана */
+        padding: 10px;
+        text-align: left; /* Оставляем текст слева */
+        display: block; /* Чтобы не было наложений */
     }
 
-    .timeline-entry img {
-        max-width: 100%;
-        height: auto;
+    /* Переносим левую колонку ниже основной */
+    .left-block {
+        width: 100%;
+        text-align: left;
+        display: block;
     }
-  }
+
+    /* Делаем текст и изображения адаптивными */
+    .timeline-entry img {
+        max-width: 90%; /* Чтобы не выходило за экран */
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+}
   </style>
 </head>
 <body>

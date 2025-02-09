@@ -167,40 +167,34 @@ nav ul li a:hover {
 }
 
 @media (max-width: 768px) {
-      .info {
-       left: 50%;
-       transform: translateX(-50%);
-       max-width: 90%;
-       font-size: 14px;
-      }
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    nav a {
+        font-size: 12px;
+        padding: 5px;
+    }
 
-      .timeline {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 3px;
-      }
+    .timeline-container {
+        padding: 10px;
+    }
 
-      .event {
-        flex-direction: column;
-        align-items: center;
-      }
+    .timeline {
+        width: 2px;
+    }
 
-      .event::before {
-        width: 15px;
-        height: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    .timeline-dot {
+        width: 10px;
+        height: 10px;
+        left: -4px;
+    }
 
-      h2 {
-        font-size: 24px;
-        margin: 30px 0;
-      }
-
-      .info img{
-        max-width: 100%;
-      }
-      }
+    .timeline-event {
+        width: 95%;
+        font-size: 14px;
+    }
+}
   </style>
 </head>
 <body>

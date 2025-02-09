@@ -33,7 +33,7 @@
   position: absolute;
   top:400px; /* Начало сверху */
   bottom: 20px;
-  height: 100%; /* До самого низа */
+  height: 92%; /* До самого низа */
   left: 50%; /* Центрируем */
   transform: translateX(-50%); /* Учитываем ширину линии */
   width: 4px;
@@ -88,34 +88,115 @@
     .info img {
       width: 100%;
       max-width: 400px;
+      max-width: 80vw;
       height: auto;
       margin-bottom: 15px;
       border-radius: 10px;
       border: 3px solid #00aaff;
       transition: transform 0.3s ease, cursor 0.3s ease;
+      object-fit: contain;
     }
 
     .info img:hover {
       transform: scale(1.1);
       cursor: zoom-in;
     }
+    footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #aaa;
+  background-color: #1c1c1c;
+  margin-top: 800px;
+}
 
-    @media (max-width: 768px) {
+nav {
+  position: fixed; /* Фиксируем вверху */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: #00aaff;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #00aaff;
+  color: black;
+  border-radius: 5px;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #00aaff;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: none; /* Изначально скрываем */
+}
+
+.back-to-top:hover {
+  background-color: #0088cc;
+  color: white;
+}
+
+@media (max-width: 768px) {
       .info {
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: min (90vw, 350px);
-        padding: 4vw;
+        position: static;
+        width: 90%;
+        max-width: 350px;
+        margin: 20px auto;
       }
+
       .timeline {
+        left: 10px;
         width: 2px;
       }
-      h2 {
-        font-size: 32px;
-      }
+
       .event {
         flex-direction: column;
         align-items: center;
+        text-align: center;
+      }
+
+      .event::before {
+        left: 10px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin: 30px 0;
+      }
+
+      .info {
+        padding: 10px;
+        font-size: 14px;
       }
     }
   </style>
@@ -123,6 +204,23 @@
 <body>
     
   <div class="scroll-effect"></div>
+
+  <nav>
+    <ul>
+      <li><a href="#worldwideweb">WorldWideWeb </a></li>
+      <li><a href="#mosaic">Mosaic </a></li>
+      <li><a href="#netscape">Netscape </a></li>
+      <li><a href="#internetexplorer">Internet Explorer </a></li>
+      <li><a href="#opera">Opera </a></li>
+      <li><a href="#Tor">Tor </a></li>
+      <li><a href="#safari">Safari </a></li>
+      <li><a href="#firefox">Firefox </a></li>
+      <li><a href="#chrome">Chrome </a></li>
+      <li><a href="#vivaldi">Vivaldi </a></li>
+      <li><a href="#brave">Brave </a></li>
+      <li><a href="#arc">Arc </a></li>
+    </ul>
+  </nav>
 
   <div class="container">
     <h2>Timeline of Browser Development</h2>
@@ -169,8 +267,18 @@
       </div>
     </div>
 
+    <div class="event" id="Tor">
+     <div class="info right">
+     <img src="images/wa_FP-tor_browser_20170310011229_657_sdqrune4gg.jpg" alt="Tor 2002:A privacy-focused browser that routes traffic through the Tor network, providing anonymity and access to the dark web">
+     <h3>2002: Tor</h3>
+    <p>A privacy-focused browser that routes traffic through the Tor network, providing anonymity and access to the dark web. </p>
+  </div>
+  </div>
+
+    
+
     <div class="event" id="safari">
-      <div class="info right">
+      <div class="info left">
         <img src="images/safari1.jpg" alt="Safari 2003: default browser for macOS and iOS, optimized for Apple devices. Known for energy efficiency, privacy features like Intelligent Tracking Prevention, and seamless integration with the Apple ecosystem ">
         <h3>2003: Safari</h3>
         <p>Default browser for macOS and iOS, optimized for Apple devices. Known for energy efficiency, privacy features like Intelligent Tracking Prevention, and seamless integration with the Apple ecosystem.</p>
@@ -178,7 +286,7 @@
     </div>
     
     <div class="event" id="firefox">
-      <div class="info left">
+      <div class="info right">
         <img src="images/e75bee6a04202ffeec6901f80cb977ae2aa7489a34fadfb9f5a98c292aca37b6-600.webp" alt="Mozilla Firefox 2004: open-source browser focused on privacy, customization, and performance, challenging Internet Explorer's dominance.">
         <h3>2004: Mozilla Firefox</h3>
         <p>Open-source browser focused on privacy, customization, and performance, challenging Internet Explorer's dominance.</p>
@@ -186,15 +294,52 @@
     </div>
     
     <div class="event" id="chrome">
-      <div class="info right">
+      <div class="info left">
         <img src="images/Google-Chrome-Anpassungen-1685554232-1-0.jpg.png" alt="Google Chrome 2008: revolutionized browsing with speed, simplicity, and powerful developer tools, becoming the most popular browser globally.">
         <h3>2008: Google Chrome</h3>
         <p>Revolutionized browsing with speed, simplicity, and powerful developer tools, becoming the most popular browser globally.</p>
       </div>
     </div>
+
+  <div class="event" id="vivaldi">
+    <div class="info right">
+      <img src="images/beta1-light-ui-win-notes.png" alt=" Vivaldi 2015: A feature-rich browser built for power users, offering extensive customization, tab management, and privacy-focused tools ">
+      <h3>2015: Vivaldi</h3>
+      <p>A feature-rich browser built for power users, offering extensive customization, tab management, and privacy-focused tools.</p>
+    </div>
+  </div>
+
+  <div class="event" id="microsoft edge">
+    <div class="info left">
+      <img src="images/1439549689012-edge-review-start.png" alt="Microsoft edge:A Chromium-based browser developed by Microsoft, optimized for performance, security, and deep integration with Windows services. ">
+      <h3>2015: Microsoft Edge</h3>
+      <p>A Chromium-based browser developed by Microsoft, optimized for performance, security, and deep integration with Windows services.</p>
+    </div>
+  </div>
+
+  <div class="event" id="brave">
+    <div class="info right">
+      <img src="images/brave-1_1-1-23.png.webp" alt=" Brave 2016: A fast, privacy-first browser with built-in ad and tracker blocking, as well as an optional cryptocurrency-based rewards system.">
+      <h3>2016: Brave</h3>
+      <p>A fast, privacy-first browser with built-in ad and tracker blocking, as well as an optional cryptocurrency-based rewards system.</p>
+    </div>
+  </div>
+
+  <div class="event" id="Arc">
+    <div class="info left">
+      <img src="images/arc.jpg" alt="Arc 2022: A modern, innovative browser by The Browser Company, designed for a highly customizable and distraction-free browsing experience.">
+      <h3>2022: Arc</h3>
+      <p>A modern, innovative browser by The Browser Company, designed for a highly customizable and distraction-free browsing experience.</p>
+    </div>
   </div>
 
   <script>
   </script>
+
+  <a href="#" class="back-to-top">↑ Back to top</a>
+    <footer>
+      <p>This page was created by Yelyzaveta Komarova during the winter term 2024/25 in the Interactive Information course of the Interface Design program at the University of Applied Sciences Potsdam</p>
+    </footer>
+    
 </body>
 </html>

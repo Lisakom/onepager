@@ -5,63 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Browser History Timeline</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #242424, #242424);
-      color: #fff;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #242424, #242424);
+  color: #fff;
+  overflow-x: hidden;
+  height: 100%;
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      padding-top: 100px;
-      min-height: 100hv;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 100px;
+  min-height: 100vh; /* Исправлено */
+  height: 100%;
+}
 
-    h2 {
-      font-size: clamp(28px, 5vw, 60px);
-      margin: 60px 0;
-      color: #00aaff;
-      text-align: center;
-    }
+h2 {
+  font-size: clamp(28px, 5vw, 60px);
+  margin: 60px 0;
+  color: #00aaff;
+  text-align: center;
+}
 
-    .timeline {
+.timeline {
   position: absolute;
-  top:400px; /* Начало сверху */
-  bottom: 20px;
-  height: 92%; /* До самого низа */
-  left: 50%; /* Центрируем */
-  transform: translateX(-50%); /* Учитываем ширину линии */
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 4px;
   background-color: #00aaff;
+  height: calc(100% - 400px);
+  min-height: calc(100vh - 500px); /* Минимальная высота по высоте экрана */
+  bottom: 0; /* Отступ перед футером */
 }
-    .event {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 200px 0;
-      width: 90%;
-    }
 
-    .event::before {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 200px;
-      background-color: #00aaff;
-      border: 3px solid #1c1c1c;
-      border-radius: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.container {
+  position: relative;
+}
 
-    .info {
+.event {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 200px 0;
+  width: 90%;
+}
+
+.event::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 200px; /* Исправлено для центрирования */
+  background-color: #00aaff;
+  border: 3px solid #1c1c1c;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.info {
   position: absolute;
   top: 60px;
   background-color: #2b2b2b;
@@ -70,7 +78,7 @@
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0, 170, 255, 0.3);
   max-width: 350px;
-  box-sizing: border-box; /* Чтобы padding не влиял на ширину */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,40 +86,43 @@
 }
 
 .info.left {
-  left: calc(50% - 400px); /* Отодвигаем влево от таймлайна */
+  left: 50%;
+  transform: translateX(-120%);
 }
 
 .info.right {
-  left: calc(50% + 50px); /* Отодвигаем вправо от таймлайна */
+  left: 50%;
+  transform: translateX(20%);
 }
 
-    .info img {
-      width: 100%;
-      max-width: 400px;
-      max-width: 80vw;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      border: 3px solid #00aaff;
-      transition: transform 0.3s ease, cursor 0.3s ease;
-      object-fit: contain;
-    }
+.info img {
+  width: 100%;
+  max-width: 400px;
+  max-width: 80vw;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 3px solid #00aaff;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
 
-    .info img:hover {
-      transform: scale(1.1);
-      cursor: zoom-in;
-    }
-    footer {
+.info img:hover {
+  transform: scale(1.1);
+  cursor: zoom-in;
+}
+
+footer {
   text-align: center;
   padding: 20px;
   font-size: 14px;
   color: #aaa;
   background-color: #1c1c1c;
-  margin-top: 800px;
+  margin-top: 400px;
 }
 
 nav {
-  position: fixed; /* Фиксируем вверху */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -148,6 +159,7 @@ nav ul li a:hover {
   color: black;
   border-radius: 5px;
 }
+
 .back-to-top {
   position: fixed;
   bottom: 90px;
@@ -158,7 +170,7 @@ nav ul li a:hover {
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  display: none !important; /* Принудительно скрываем */
+  display: none; /* Убрано !important */
 }
 
 .back-to-top:hover {
@@ -168,41 +180,27 @@ nav ul li a:hover {
 
 @media (min-width: 768px) {
   .back-to-top {
-    display: block !important; /* Принудительно показываем */
+    display: block;
   }
 }
+
 @media (max-width: 768px) {
-    /* Уменьшаем текст под заголовком */
-    .timeline-entry h2 {
-        font-size: 18px; /* Еще немного уменьшили */
-    }
+  .timeline-container {
+    padding: 20px;
+    text-align: center;
+  }
 
-    .timeline-entry p {
-        font-size: 12px;
-    }
+  .timeline-entry {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-    /* Уменьшаем ширину блоков и центрируем их */
-    .timeline-entry {
-        max-width: 100%; /* Растягиваем на всю ширину экрана */
-        padding: 10px;
-        text-align: left; /* Оставляем текст слева */
-        display: block; /* Чтобы не было наложений */
-    }
-
-    /* Переносим левую колонку ниже основной */
-    .left-block {
-        width: 100%;
-        text-align: left;
-        display: block;
-    }
-
-    /* Делаем текст и изображения адаптивными */
-    .timeline-entry img {
-        max-width: 90%; /* Чтобы не выходило за экран */
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
+  .timeline-entry img {
+    max-width: 100%;
+    height: auto;
+  }
 }
   </style>
 </head>
@@ -227,10 +225,11 @@ nav ul li a:hover {
     </ul>
   </nav>
 
-  <div class="container">
+  <div class="container"> 
     <h2>Timeline of Browser Development</h2>
     <p class="description">This website presents the history of web browsers in a timeline format. Discover how browsers evolved from the early days of the internet to the modern browsing experience we have today.</p>
     <div class="timeline"></div>
+    
     
     <div class="event" id="worldwideweb">
       <div class="info left">
@@ -250,7 +249,7 @@ nav ul li a:hover {
 
     <div class="event" id="netscape">
       <div class="info left">
-        <img src="images/netscape-browser^1997^netscape-navigator-4-windows-about.png" alt="Netscape Navigator 1994: the first commercially successful browser, introducing innovations like cookies and secure data transmission">
+        <img src="images/netscape-browser1997netscape-navigator-4-windows-about.png" alt="Netscape Navigator 1994: the first commercially successful browser, introducing innovations like cookies and secure data transmission">
         <h3>1994: Netscape Navigator</h3>
         <p>The first commercially successful browser, introducing innovations like cookies and secure data transmission.</p>
       </div>
@@ -314,7 +313,7 @@ nav ul li a:hover {
     </div>
   </div>
 
-  <div class="event" id="microsoft edge">
+  <div class="event" id="microsoftedge">
     <div class="info left">
       <img src="images/1439549689012-edge-review-start.png" alt="Microsoft edge:A Chromium-based browser developed by Microsoft, optimized for performance, security, and deep integration with Windows services. ">
       <h3>2015: Microsoft Edge</h3>
@@ -330,17 +329,36 @@ nav ul li a:hover {
     </div>
   </div>
 
-  <div class="event" id="Arc">
+  <div class="event" id="arc">
     <div class="info left">
       <img src="images/arc.jpg" alt="Arc 2022: A modern, innovative browser by The Browser Company, designed for a highly customizable and distraction-free browsing experience.">
       <h3>2022: Arc</h3>
       <p>A modern, innovative browser by The Browser Company, designed for a highly customizable and distraction-free browsing experience.</p>
     </div>
   </div>
+  </div>
 
   <a href="#" class="back-to-top">↑ Back to top</a>
     <footer>
       <p>This page was created by Yelyzaveta Komarova during the winter term 2024/25 in the Interactive Information course of the Interface Design program at the University of Applied Sciences Potsdam</p>
     </footer>
-</body>
-</html>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          function updateTimelineHeight() {
+              const timeline = document.querySelector(".timeline");
+              const lastEvent = document.querySelector(".event:last-of-type");
+              const footer = document.querySelector("footer");
+      
+              if (timeline && lastEvent && footer) {
+                  const lastEventBottom = lastEvent.offsetTop + lastEvent.offsetHeight;
+                  const footerTop = footer.offsetTop;
+                  timeline.style.height = `${footerTop - timeline.offsetTop}px`;
+              }
+          }
+      
+          updateTimelineHeight();
+          window.addEventListener("resize", updateTimelineHeight);
+      });
+      </script>
+      </body>
+      </html>
